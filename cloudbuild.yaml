@@ -11,7 +11,7 @@ steps:
       - image
       - deployment
       - cloud-build-experiment-deployment
-      - cloud-build-experiment-container=gcr.io/$PROJECT_ID/cloud-build-experiment:$REVISION_ID
+      - cloud-build-experiment-container=gcr.io/$PROJECT_ID/cloud-build-experiment
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cloud-build-experiment'
