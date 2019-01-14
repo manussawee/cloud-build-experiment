@@ -4,16 +4,18 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'test']
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/cloud-build-experiment:$SHORT_SHA', '.' ]
+    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/cloud-build-experiment:${_VERSION_TAG}', '.' ]
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - set
       - image
       - deployment
       - cloud-build-experiment-deployment
-      - cloud-build-experiment-container=gcr.io/$PROJECT_ID/cloud-build-experiment:$SHORT_SHA
+      - cloud-build-experiment-container=gcr.io/$PROJECT_ID/cloud-build-experiment:${_VERSION_TAG}
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cloud-build-experiment'
 images:
-  - gcr.io/$PROJECT_ID/cloud-build-experiment:$SHORT_SHA
+  - gcr.io/$PROJECT_ID/cloud-build-experiment:${_VERSION_TAG}
+substitutions:
+    _VERSION_TAG: 1.0.0
