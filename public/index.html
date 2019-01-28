@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <head>
-    <title>Google Cloud Build - Experiemnt</title>
+    <title>Google Cloud Build - Demo</title>
     <script src="main.js"></script>
 </head>
 <body>
-    <p>Hello, World</p>
-    <P>1st update</P>
-    <p>2nd update</p>
-    <p>3rd update</p>
-    <p>4th update</p>
-    <p>5th update</p>
-    <p>6th update</p>
-    <p id="time">Loading...</p>
+    <p>Version: 1.0.0</p>
+    <form id="form">
+        <div><input id="A" type="text" autofocus /></div>
+        <div><span> x </span></div>
+        <div><input id="B" type="text" /></div>
+        <div><span> = </span></div>
+        <div><input id="C" type="text" value="0" disabled /></div>
+        <div style="margin-top: 8px">
+            <input type="submit" value="submit" />
+        </div>
+    </form>
     <script>
-        setTime('time');
+        document.getElementById("form").addEventListener("submit", e => {
+            e.preventDefault();
+            const a = parseInt(document.getElementById("A").value) || 0;
+            const b = parseInt(document.getElementById("B").value) || 0;
+            const c = multiply(a, b);
+            console.log(c);
+            document.getElementById("C").value = c;
+        });
     </script>
 </body>
