@@ -20,4 +20,4 @@ images:
   - gcr.io/$PROJECT_ID/cloud-build-experiment:${_VERSION_TAG}
 
 substitutions:
-    _VERSION_TAG: 1.0.5
+    _VERSION_TAG: latest
